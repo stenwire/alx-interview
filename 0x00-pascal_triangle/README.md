@@ -1,1 +1,1 @@
-# https://github.com/stenwire/alx-interview.git
+## An implementation of the Pascal's Triangle

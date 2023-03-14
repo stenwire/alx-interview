@@ -1,20 +1,25 @@
 #!/usr/bin/python3
-"""
-Contains pascal_triangle function
-"""
+"""A module that return the pascal triangle of any integer
+passed to a function"""
 
 
 def pascal_triangle(n):
-    """Creates a pascal triangle"""
-    triangle = []
-    if (n <= 0):
-        return []
-    for row in range(n):
-        curr = [None] * (row + 1)
-        curr[0], curr[-1] = 1, 1
-        for col in range(1, row):
-            above_to_left_elt = triangle[row - 1][col-1]
-            above_to_right_elt = triangle[row - 1][col]
-            curr[col] = above_to_left_elt + above_to_right_elt
-        triangle.append(curr)
-    return triangle
+    """Implementation of the pascal triangle"""
+    p_traing = []
+    for idx in range(n):
+        if idx == 0:
+            p_traing.append([1])
+            continue
+        if idx == 1:
+            p_traing.append([1, 1])
+            continue
+        row = []
+        row.append(1)
+        prev_row = p_traing[idx - 1]
+        for i in range(len(prev_row)):
+            if i == 0:
+                continue
+            row.append(prev_row[i] + prev_row[i - 1])
+        row.append(1)
+        p_traing.append(row)
+    return p_traing
